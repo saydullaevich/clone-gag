@@ -1,0 +1,92 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-09-15 03:11+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+#: client/forms.py:10 client/forms.py:25
+msgid "Login"
+msgstr ""
+
+#: client/forms.py:11 client/forms.py:26
+msgid "Parol"
+msgstr "Пароль"
+
+#: client/forms.py:14
+msgid "Parol takroran"
+msgstr "Повторите пароль"
+
+#: client/forms.py:18
+msgid "Parollar bir xil emas"
+msgstr "Пароли не совпадают!"
+
+#: client/forms.py:29
+msgid "Lotin harflari, sonlar va @/./+/-/_ belgilaridan iborat bo'lishi lozim."
+msgstr "Пароль должен состоять из латинских букв, цифр и символов @ /. / + / - / _."
+
+#: client/views.py:18
+msgid "Ro'yxatdan o'tish"
+msgstr "Авторизация"
+
+#: client/views.py:31
+msgid "Siz ro'yxatdan muvaffaqiyatli o'tdingiz."
+msgstr "Вы успешно зарегистрировались!"
+
+#: client/views.py:42 templates/layouts/base.html:46
+msgid "Tizimga kirish"
+msgstr "Войти"
+
+#: client/views.py:56
+msgid "Xush kelibsiz, {}!"
+msgstr "Добро пожаловать, {}!"
+
+#: client/views.py:65
+msgid "Xayr {}!"
+msgstr "Bye Bye {}!"
+
+#: client/views.py:78 templates/layouts/base.html:35
+msgid "Profil"
+msgstr "Профиль"
+
+#: client/views.py:79
+msgid "Saqlash"
+msgstr "Сохранить"
+
+#: main/models.py:28 main/models.py:40
+msgid "Izoh"
+msgstr "Комментария"
+
+#: main/models.py:29
+msgid "Rasm/Video"
+msgstr "Изображение/Видео"
+
+#: main/views.py:29 templates/layouts/base.html:42
+msgid "Yuklash"
+msgstr "Загрузить"
+
+#: main/views.py:32
+msgid "Muvaffaqiyatli yakunlandi"
+msgstr "Успешно добавлено"
+
+#: templates/layouts/base.html:36
+msgid "Chiqish"
+msgstr "Выход"
+
+#: templates/layouts/base.html:49
+msgid "Ro'xatdan o'tish"
+msgstr ""

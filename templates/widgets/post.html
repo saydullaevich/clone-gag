@@ -1,0 +1,39 @@
+{% load static %}
+<h1 class="cat-name text-black-50"></h1>
+
+<div class="border-bottom mt-3">
+    <div class="d-flex align-items-center">
+        <span class="d-inline-block cat-img me-1 cover" style="background-image: url('{{ post.category.image.url }}');"></span>
+        <a class="text-black-50 me-2" href="{% url 'main:cat' post.category_id %}" >{{ post.category.name }}</a>
+
+        <span class="d-inline-block cat-img me-1 ms-3 cover" style="background-image: url('{{ post.user.avatar }}');"></span>
+        {{ post.user.username }}
+    </div>
+    {% if post.is_audio %}
+        <audio controls>
+            <source src="{{ post.file.url }}" type="audio/ogg">
+        </audio>
+    {% elif post.is_video %}
+        <video width="100%" height="400px" controls>
+            <source src="{{ post.file.url }}" type="video/mp4">
+        </video>
+    {% elif post.is_image %}
+        <img class="img-fluid lozad" src="{{ post.file.url }}" alt="">
+    {% else %}
+        <h1 class="text-muted">Unsupported format</h1>
+    {% endif %}
+    <div class="p-3">
+        {{ post.comment }}
+    </div>
+    <div class="ccc d-flex mb-3">
+        <a href="{% url 'main:like' 'like' post.id %}?return={{ request.get_full_path }}" class="border px-3 py-2 text-muted">
+            <i class="bi-hand-thumbs-up"></i>{{ post.like }}
+        </a>
+        <a href="{% url 'main:like' 'dislike' post.id %}?return={{ request.get_full_path }}" class="border px-3 py-2 text-muted me-2">
+            <i class="bi-hand-thumbs-down"></i>{{ post.dislike }}
+        </a>
+        <a href="{% url 'main:comment' post.id %}" class="border px-3 py-2 text-muted me-2">
+            <i class="bi-chat-left-fill"></i>
+        </a>
+    </div>
+</div>

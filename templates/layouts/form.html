@@ -1,0 +1,26 @@
+{% extends 'layouts/base.html' %}
+
+{% load crispy_forms_filters %}
+
+{% load static i18n %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <form class="card" method="post" action="" enctype="multipart/form-data">
+                <div class="card-header">{{ request.title }}</div>
+                    <div class="card-body">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                    </div>
+                    <div class="card-footer text-right">
+                        <button class="btn btn-primary" type="submit">{{ request.button_title|default:request.title|default:"Saqlash" }}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,95 @@
+{% if not request.GET.is_ajax %}
+{% load static i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+
+
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9Gag</title>
+
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'main:index' %}">Gag</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto align-items-center font-weight-bold">
+                {% if user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link user-avatar cover rounded-circle" 
+                            data-bs-toggle="dropdown" 
+                            style="background-image: url('{{ request.user.avatar }}')" href="#">
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="{% url 'client:profile' %}" class="dropdown-item">{% translate "Profil" %}</a>
+                            <a href="{% url 'client:logout' %}" class="dropdown-item">{% translate "Chiqish" %}</a>
+                        </div>
+                    </li>
+                    <li class="nav-item ms-3">
+                        <a class="btn btn-primary rounded-pill" href="{% url 'main:upload' %}">
+                        <i class="bi-upload"></i>
+                        {% translate "Yuklash" %}</a>
+                    </li>
+                    <li class="nav-item dropdown ms-3">
+                        <a class="nav-link lang-link active" 
+                            data-bs-toggle="dropdown" href="#">
+                            {% for l in LANGUAGES %}
+                                {% if l.0 == LANGUAGE_CODE %}
+                                    {{ l.1|slice:":2" }}
+                                {% endif %}
+                            {% endfor %}
+                        </a>
+                        <div class="dropdown-menu">
+                            {% for l in LANGUAGES %}
+                                <a href="/{{ l.0 }}{{ request.get_full_path|slice:"3:" }}" class="dropdown-item">
+                                    {{ l.1 }}
+                                </a>
+                            {% endfor %}
+                        </div>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'client:login' %}">{% translate "Tizimga kirish" %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-primary rounded-pill" href="{% url 'client:registration' %}">{% translate "Ro'xatdan o'tish" %}</a>
+                    </li>
+                {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        {% for m in messages %}
+            <div class="alert {{ m.tags }} alert-dismissable fade show">
+                {{ m }}
+            </div>
+        {% endfor %}
+{% endif %}
+        {% block content %}{% endblock %}
+{% if not request.GET.is_ajax %}
+    </div>
+
+    <script src="{% static 'vendor/jquery.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.js' %}"></script>
+    <script src="{% static 'javascript/main.js' %}"></script>
+</body>
+
+</html>
+{% endif %}

@@ -1,0 +1,35 @@
+{% extends 'layouts/base.html' %}
+{% load static i18n bootstrap_pagination %}
+
+{% block content %}
+{% if not request.GET.is_ajax %}
+    <div class="row">
+        <div class="col-lg-3">
+            <h5 class="text-uppercase text-muted mt-3">{% translate "Kategoriyalar" %}</h5>
+            {% for cat in categories %}
+            <div class="cat">
+                <a c-id="{{ cat.id }}" data-src="{{ cat.image.url }}" href="{% url 'main:cat' cat.id %}" class="d-flex align-items-center text-black-50 me-2">
+                    <span class="d-inline-block cat-img me-2 cover" style="background-image: url('{{ cat.image.url }}');"></span>
+                    {{ cat.name }}
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col-lg-9">
+            <img src="{% static 'img/banner.gif' %}" class="img-fluid" alt="">
+            <div class="row">
+                <div class="col-lg-9">
+{% endif %}
+                    {% block banner_content %}{% endblock %}
+{% if not request.GET.is_ajax %}
+                </div>
+                <div class="col-lg-3">
+                    <img src="{% static 'img/small-banner.png' %}" class="img-fluid mt-3" alt="">
+                    <img src="{% static 'img/small-banner.png' %}" class="img-fluid mt-3" alt="">
+                    <img src="{% static 'img/small-banner.png' %}" class="img-fluid mt-3" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}    
+{% endblock %}
